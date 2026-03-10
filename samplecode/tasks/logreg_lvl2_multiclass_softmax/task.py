@@ -402,7 +402,6 @@ if __name__ == "__main__":
     print(f"  Rel change    : {rel_change:+.4f}  (tolerance: +0.05)")
     print(f"  Result        : {'PASS' if mono_ok else 'FAIL'}")
 
-    # Quality assertions
     print("\n--- Quality Assertions ---")
     try:
         assert val_metrics["macro_f1"] > CFG["min_macro_f1"], (
