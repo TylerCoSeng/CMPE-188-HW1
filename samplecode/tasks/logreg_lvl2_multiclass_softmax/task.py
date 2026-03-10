@@ -317,7 +317,6 @@ if __name__ == "__main__":
     print(f"Device: {device}")
     print("=" * 60)
 
-    # Data
     train_loader, val_loader, X_val_np, y_val_np = make_dataloaders(
         n_samples   = CFG["n_samples"],
         n_features  = CFG["n_features"],
@@ -328,7 +327,6 @@ if __name__ == "__main__":
         seed        = 42,
     )
 
-    # Model
     model = build_model(
         n_features = CFG["n_features"],
         n_classes  = CFG["n_classes"],
@@ -337,7 +335,6 @@ if __name__ == "__main__":
     n_params = sum(p.numel() for p in model.parameters())
     print(f"\nModel : SoftmaxRegression  ({n_params} parameters)")
 
-    # Train
     print(f"\nTraining for {CFG['n_epochs']} epochs  "
           f"(Adam, lr={CFG['lr']}, wd={CFG['weight_decay']}) ...")
     history = train(
@@ -349,7 +346,6 @@ if __name__ == "__main__":
         weight_decay = CFG["weight_decay"],
     )
 
-    # Evaluate
     train_metrics = evaluate(
         model, train_loader, n_classes=CFG["n_classes"], split_name="train")
     val_metrics   = evaluate(
