@@ -283,7 +283,6 @@ if __name__ == "__main__":
     print(f"Device: {device}")
     print("=" * 60)
 
-    # Data
     train_loader, val_loader = make_dataloaders(
         n_samples   = CFG["n_samples"],
         n_features  = CFG["n_features"],
@@ -304,7 +303,6 @@ if __name__ == "__main__":
         lr       = CFG["lr"],
     )
 
-    # Evaluate
     train_metrics = evaluate(model, train_loader, threshold=CFG["threshold"], split_name="train")
     val_metrics   = evaluate(model, val_loader,   threshold=CFG["threshold"], split_name="val")
 
